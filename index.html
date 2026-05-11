@@ -1,0 +1,664 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roy's Resume as Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #29456e;
+      --dark: #1c1b1f;
+      --gray: #605d62;
+      --chip-border: rgba(108, 134, 167, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #ececec;
+      padding: 20px;
+      font-family: "Kanit", sans-serif;
+      color: var(--dark);
+    }
+
+    .page-shell {
+      width: min(100%, 1280px);
+      margin: 0 auto;
+    }
+
+    .sheet {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 36px;
+    }
+
+    .download-area {
+      display: flex;
+      justify-content: center;
+      padding: 28px 0 6px;
+    }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 10px 18px;
+      background: var(--blue);
+      border: 1px solid var(--blue);
+      color: #fff;
+      font-family: "Libre Baskerville", "Baskerville Old Face", Baskerville, serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(41, 69, 110, 0.22);
+      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .download-button:hover {
+      background: #fff;
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .download-button:focus-visible {
+      outline: 3px solid rgba(108, 134, 167, 0.45);
+      outline-offset: 3px;
+    }
+
+    .top-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .name-badge {
+      background: var(--blue);
+      padding: 6px 8px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .name-badge h1 {
+      margin: 0;
+      color: #fff;
+      font-family: "Libre Baskerville", "Baskerville Old Face", Baskerville, serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .name-quote {
+      font-weight: 700;
+    }
+
+    .qr {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .main-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 150fr 440fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .left-col {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      container-type: inline-size;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .education-section {
+      gap: 18px;
+    }
+
+    .right-col {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: "Libre Baskerville", "Baskerville Old Face", Baskerville, serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.05;
+      color: #000;
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: "Libre Baskerville", "Baskerville Old Face", Baskerville, serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--blue);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .left-col .section-title {
+      margin-top: 0;
+    }
+
+    @media (min-width: 901px) {
+      .left-col .section-title {
+        font-size: 22px;
+      }
+
+      @supports (font-size: 1cqw) {
+        .left-col .section-title {
+          font-size: min(32px, calc((100cqw - 4px) / 10.5));
+        }
+      }
+    }
+
+    .contact-list,
+    .skill-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-item {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Libre Baskerville", "Baskerville Old Face", Baskerville, serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-item img {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #000;
+    }
+
+    .sub-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--blue);
+    }
+
+    .meta {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--dark);
+    }
+
+    .date {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .chip {
+      border: 1px solid var(--chip-border);
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+
+    .edu-block,
+    .skill-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-group .sub-title {
+      color: var(--dark);
+    }
+
+    .experience {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .experience-role-wrap {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .experience-role {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #000;
+    }
+
+    .experience-org {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--blue);
+    }
+
+    .experience-list {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .experience-list li {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: 0;
+      color: var(--dark);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 10px;
+      }
+
+      .sheet {
+        width: 100%;
+        padding: 14px;
+      }
+
+      .download-area {
+        padding-top: 20px;
+      }
+
+      .download-button {
+        width: 100%;
+      }
+
+      .top-row {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .name-badge {
+        max-width: 100%;
+      }
+
+      .name-badge h1 {
+        font-size: 30px;
+        white-space: normal;
+        line-height: 1.05;
+      }
+
+      .qr {
+        margin-left: auto;
+      }
+
+      .main-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .left-col,
+      .right-col {
+        width: 100%;
+      }
+
+      .left-col {
+        gap: 24px;
+      }
+
+      .headline {
+        font-size: 30px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        line-height: 1.1;
+        white-space: normal;
+      }
+
+      .contact-item,
+      .experience-role,
+      .experience-org,
+      .date {
+        white-space: normal;
+      }
+
+      .experience-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .chip {
+        white-space: normal;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .name-badge h1 {
+        font-size: 26px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .qr {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+  <article class="sheet">
+    <header class="top-row">
+      <div class="name-badge">
+        <h1>HAOSHU <span class="name-quote">“</span>ROY<span class="name-quote">”</span> YANG</h1>
+      </div>
+      <img class="qr" src="./assets/qr.svg" alt="QR code" />
+    </header>
+
+    <section class="main-row">
+      <div class="left-col">
+        <section class="left-section basic-info-section">
+          <h2 class="headline">Product Designer</h2>
+
+          <div class="contact-list">
+            <p class="contact-item"><img src="./assets/location.svg" alt="" />Brooklyn, NY</p>
+            <a class="contact-item" href="https://royyang.com" target="_blank" rel="noreferrer"><img src="./assets/web.svg" alt="" />royyang.com</a>
+            <a class="contact-item" href="https://www.linkedin.com/in/haoshuyang/" target="_blank" rel="noreferrer"><img src="./assets/linkedin.svg" alt="" />linkedin.com/in/haoshuyang/</a>
+            <a class="contact-item" href="mailto:TheRealHaoshuYang@gmail.com"><img src="./assets/mail.svg" alt="" />TheRealHaoshuYang@gmail.com</a>
+          </div>
+        </section>
+
+        <section class="left-section education-section">
+          <h3 class="section-title">&gt; Education</h3>
+
+          <div class="edu-block">
+            <p class="title">Parsons School of Design</p>
+            <p class="sub-title">Master of Fine Arts</p>
+            <p class="meta">Major: Design and Technology<br />Minor: Civic Service Design</p>
+            <p class="date">09/2020 - 05/2023</p>
+            <div class="chips">
+              <span class="chip">Interaction Design</span>
+              <span class="chip">Web Design</span>
+              <span class="chip">Experience Design</span>
+              <span class="chip">Game Design</span>
+              <span class="chip">Service Design</span>
+              <span class="chip">Creative Coding</span>
+              <span class="chip">Graphic Design</span>
+              <span class="chip">Motion Graphics</span>
+              <span class="chip">Data Visualization</span>
+              <span class="chip">Public Space</span>
+            </div>
+          </div>
+
+          <div class="edu-block">
+            <p class="title">University of Glasgow</p>
+            <p class="sub-title">Bachelor of Engineering (Hons)</p>
+            <p class="meta">Major: Electronic and Electrical Engineering</p>
+            <p class="date">09/2016 - 06/2020</p>
+            <div class="chips">
+              <span class="chip">Embedded Processor</span>
+              <span class="chip">Circuit Design</span>
+              <span class="chip">Project Management &amp; Finance</span>
+              <span class="chip">New Product Creation and Business Plan</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="left-section skills-section">
+          <h3 class="section-title">&gt; Skills &amp; Tools</h3>
+
+          <div class="skill-stack">
+            <div class="skill-group">
+              <p class="sub-title">Graphic Design &amp; Illustration</p>
+              <div class="chips">
+                <span class="chip">Photoshop</span>
+                <span class="chip">Illustrator</span>
+                <span class="chip">InDesign</span>
+                <span class="chip">Procreate</span>
+                <span class="chip">Canva</span>
+                <span class="chip">PowerPoint</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <p class="sub-title">UI/UX &amp; Web Design</p>
+              <div class="chips">
+                <span class="chip">User-centered Design</span>
+                <span class="chip">User Research</span>
+                <span class="chip">XD</span>
+                <span class="chip">Figma</span>
+                <span class="chip">Sketch</span>
+                <span class="chip">HTML/CSS</span>
+                <span class="chip">p5.js</span>
+                <span class="chip">SharePoint</span>
+                <span class="chip">WordPress</span>
+                <span class="chip">Claude Code</span>
+                <span class="chip">Codex</span>
+                <span class="chip">MCP</span>
+                <span class="chip">Google Stitch</span>
+                <span class="chip">Vibe Coding</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <p class="sub-title">Video Editing &amp; Motion Graphics</p>
+              <div class="chips">
+                <span class="chip">Premiere Pro</span>
+                <span class="chip">After Effects</span>
+                <span class="chip">Final Cut Pro</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <p class="sub-title">3D Modeling</p>
+              <div class="chips">
+                <span class="chip">Cinema 4D</span>
+                <span class="chip">Blender</span>
+                <span class="chip">Rhinoceros</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <p class="sub-title">Data Visualization</p>
+              <div class="chips">
+                <span class="chip">Tableau</span>
+                <span class="chip">PowerBI</span>
+                <span class="chip">Python</span>
+                <span class="chip">Excel</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <p class="sub-title">Game &amp; Interactive Design</p>
+              <div class="chips">
+                <span class="chip">Unity3D</span>
+                <span class="chip">Arduino</span>
+                <span class="chip">Touch Designer</span>
+                <span class="chip">C#</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="right-col">
+        <h3 class="section-title">&gt; Recent Experience</h3>
+
+        <article class="experience">
+          <header class="experience-head">
+            <div class="experience-role-wrap">
+              <p class="experience-role">AI Product Design Lead, Founding Member</p>
+              <p class="experience-org">Bytey</p>
+            </div>
+            <p class="date">07/2024 - Present</p>
+          </header>
+          <ul class="experience-list">
+            <li>Lead product design across mobile and web, translating research, UX strategy, and product goals into user flows, wireframes, high-fidelity prototypes, and polished interfaces.</li>
+            <li>Own and evolve Bytey’s design system, creating reusable components, interaction patterns, and documentation to support consistency, scalability, and efficient engineering handoff.</li>
+            <li>Collaborate closely with engineers, artists, and cross-functional teammates to define core product features, refine the visual direction, and ship cohesive app and web experiences.</li>
+            <li>Work within an AI-first product workflow, partnering with engineering to understand model behavior, identify edge cases and failure modes, and define system-level solutions that improve both AI performance and user experience.</li>
+            <li>Design reusable UX patterns for AI interactions, including search, recommendations, feedback states, and agentic workflows, making complex model outputs clearer, more reliable, and easier to use.</li>
+            <li>Build high-fidelity interactive prototypes and product-facing web experiences, including the ByteyAI web MVP, to accelerate iteration, user testing, and development handoff.</li>
+            <li>Helped bring Bytey from 0 to 1, contributing to a product nominated for the UX Design Awards Spring 2026 in the Product category.</li>
+          </ul>
+        </article>
+
+        <article class="experience">
+          <header class="experience-head">
+            <div class="experience-role-wrap">
+              <p class="experience-role">Website Visual Designer</p>
+              <p class="experience-org">The Ahmad Butler Foundation</p>
+            </div>
+            <p class="date">11/2023 - 06/2024</p>
+          </header>
+          <ul class="experience-list">
+            <li>Entrusted with the pivotal role of leading the visual design and UX/UI development for the "1Million Families March" campaign, a key initiative for childhood cancer awareness and fundraising.</li>
+            <li>Conducted extensive research and field studies to understand the needs of the foundation, the expectations of clients, and the journey of end-users navigating the cause's digital presence.</li>
+            <li>Orchestrated the design process from conceptual sketches to high-fidelity prototypes and built the design system, ensuring the website's visuals and usability align with the foundation's mission and user expectations.</li>
+            <li>Leveraged a human-centered design approach to craft intuitive navigation and responsive interfaces for both mobile and desktop, from mapping out the user-flow to conducting user testing to gather insightful feedback, iteratively refining the flow and design to optimize for clarity, accessibility, and user interaction.</li>
+            <li>Led the design team and collaborated closely with the developer and the foundation to ensure that design solutions are technically achievable, meet strategic objectives and foster a supportive online community.</li>
+          </ul>
+        </article>
+
+        <article class="experience">
+          <header class="experience-head">
+            <div class="experience-role-wrap">
+              <p class="experience-role">Creative Technologist</p>
+              <p class="experience-org">Immersive Interactive Installation with “teamecho.studio”</p>
+            </div>
+            <p class="date">10/2023 - 06/2024</p>
+          </header>
+          <ul class="experience-list">
+            <li>Played a pivotal role in the creation of "The Power Paradox" and "Echo", immersive interactive installations designed to engage audiences with themes of empowerment of diverse voices and critical thinking against misinformation, through exploration and play.</li>
+            <li>Collaborated with a product manager, visual designer, and sound designer to conceptualize and develop the core ideas, ensuring the installations resonated deeply with audiences through interactive experiences.</li>
+            <li>Crafted the installation with a hands-on approach, integrating various sensory inputs with Arduino and facilitating their seamless interaction with TouchDesigner and MadMapper to create immersive experiences. Took the lead on integrating physical computing elements, meticulously linking sensor data to visual outputs, providing users with real-time interactive feedback.</li>
+            <li>Directed the design and development of the project's online presence, using Figma for UI/UX prototyping and employing HTML/CSS/JavaScript to bring the responsive web interface to life, hosted via GitHub Pages. Enhanced the platform with advanced creative coding techniques using @p5xjs, ensuring a dynamic and engaging user experience.</li>
+            <li>Implemented cutting-edge SEO strategies and developed the site as a progressive web application (PWA) to ensure optimal accessibility and visibility. This approach not only improved user engagement but also mirrored the installation's interactive and creative nature, offering visitors a cohesive understanding of the project's intent and scope.</li>
+          </ul>
+        </article>
+
+        <article class="experience">
+          <header class="experience-head">
+            <div class="experience-role-wrap">
+              <p class="experience-role">Adjunct Professor</p>
+              <p class="experience-org">Parsons School of Design</p>
+            </div>
+            <p class="date">08/2023 - 06/2024</p>
+          </header>
+          <ul class="experience-list">
+            <li>Taught studio classes “Critical Computation Lab” for graduate and undergrad students.</li>
+            <li>The course focused on p5.js, HTML/CSS, creative coding, web design, and game design through a critical lens.</li>
+          </ul>
+        </article>
+
+        <article class="experience">
+          <header class="experience-head">
+            <div class="experience-role-wrap">
+              <p class="experience-role">Graphic Design Intern</p>
+              <p class="experience-org">United Nations</p>
+            </div>
+            <p class="date">01/2023 - 04/2023</p>
+          </header>
+          <ul class="experience-list">
+            <li>Initiated the visual identity (VI) redesign for the prestigious Journal of the United Nations based on the needs, enhancing the publication's visual and communicative impact.</li>
+            <li>Established a cohesive set of style guides, design documents and templates to streamline the production process.</li>
+            <li>Conceptualized and executed the design of the Journal portal website in SharePoint, improving content accessibility and stakeholder collaboration among the departments.</li>
+            <li>Collaborated with other designer and employed Power BI to visualize complex data sets, producing interactive dashboards that offer insightful and user-friendly data interpretation.</li>
+            <li>Successfully led the technical migration of the NADI site from WordPress to SharePoint, ensuring a seamless transition without compromising content integrity or user experience.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </article>
+  <div class="download-area">
+    <a class="download-button" href="./assets/resume-roy-yang-product-design.pdf" download="Resume - Roy Yang - Product Design.pdf">Download PDF Resume</a>
+  </div>
+  </main>
+</body>
+</html>
